@@ -27,7 +27,7 @@ export class ApiService {
     return this.http.put(`${this.updateurl}/${_id}`,data)
   }
 
-  deleteurl = "";
+  deleteurl = "http://localhost:5000/employee";
 
   public deleteuser(id: any): Observable<any> {
     return this.http.delete(`${this.deleteurl}/${id}`);

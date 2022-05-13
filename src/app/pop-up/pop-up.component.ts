@@ -44,6 +44,7 @@ export class PopupComponents implements OnInit {
       this.myform.controls["email"].setValue(this.empdata.uemail);
       this.myform.controls["mobile"].setValue(this.empdata.umobile);
       this.myform.controls["salary"].setValue(this.empdata.usalary);
+      this.myform.controls["image"].setValue(this.empdata.uimage);
 
       // this.myform.controls["avatar"].setValue(this.empdata.avatar);
     }

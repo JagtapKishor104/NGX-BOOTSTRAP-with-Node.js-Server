@@ -105,9 +105,9 @@ export class AppComponent implements OnInit {
 
 
 
-  deleteData(id: any) {
-
-    this.api.deleteuser(id).subscribe({
+  deleteData(_id: any) {
+    localStorage.setItem("_id", _id)
+    this.api.deleteuser(_id).subscribe({
       next: (res) => {
         Swal.fire({
           title: 'Do You Want Delete',
@@ -136,7 +136,8 @@ export class AppComponent implements OnInit {
             })
 
             this.getusers();
-            console.log(id);
+            console.log(_id);
+            localStorage.clear();
 
 
 
