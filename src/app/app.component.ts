@@ -78,6 +78,8 @@ export class AppComponent implements OnInit {
     })
 
   }
+
+  
   openEditComponent(d: any) {
 
     const initialState: ModalOptions = {
@@ -105,9 +107,9 @@ export class AppComponent implements OnInit {
 
 
 
-  deleteData(_id: any) {
-    localStorage.setItem("_id", _id)
-    this.api.deleteuser(_id).subscribe({
+  deleteData(id: any) {
+
+    this.api.deleteuser(id).subscribe({
       next: (res) => {
         Swal.fire({
           title: 'Do You Want Delete',
@@ -136,8 +138,7 @@ export class AppComponent implements OnInit {
             })
 
             this.getusers();
-            console.log(_id);
-            localStorage.clear();
+            console.log(id);
 
 
 

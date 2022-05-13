@@ -41,10 +41,10 @@ app.get('/employee', async (req, res) => {
 
 app.get('/', (req, res) => {
     res
-      .status(200)
-      .send('Hello server is running')
-      .end();
-  });
+        .status(200)
+        .send('Hello server is running')
+        .end();
+});
 // get data by id
 app.get('/employee/:id', async (req, res) => {
     console.log('employee id', req.params.id);
@@ -86,23 +86,25 @@ app.post('/employee', async (req, res) => {
     console.log(req.body, 'employee postdata');
     const chkdataexit = await EmployeeModel.findOne({ $or: [{ uemail: req.body.email }, { umobile: req.body.mobile }] });
     if (chkdataexit) {
-        if (chkdataexit.uemail === req.body.email && chkdataexit.umobile === req.body.mobile) {
+        if (chkdataexit.uemail === req.body.email && chkdataexit.umobile == req.body.mobile) {
             res.send({
                 msg: "Mobile number and Email already exists"
             })
         } else
+        if (chkdataexit.umobile === req.body.mobile) {
+            res.send({
+                msg: "mobile number already exits"
+            });
+        }
+           
+
+            else
             if (chkdataexit.uemail === req.body.email) {
                 res.send({
                     msg: "email id already exits"
                 });
             }
-
-            else
-                if (chkdataexit.umobile === req.body.mobile) {
-                    res.send({
-                        msg: "mobile number already exits"
-                    });
-                }
+               
 
 
     }
@@ -115,7 +117,7 @@ app.post('/employee', async (req, res) => {
                 uemail: req.body.email,
                 umobile: req.body.mobile,
                 usalary: req.body.salary,
-                uimage:req.body.image
+                uimage: req.body.image
             }
         );
         data.save((err, result) => {
@@ -176,21 +178,20 @@ app.put('/employee/:id', async (req, res) => {
             ulname: req.body.lname,
             umobile: req.body.mobile,
             usalary: req.body.salary,
-            uimage:req.body.image
-           
+            uimage: req.body.image
+
         }
     });
 
-    if (updatedata.modifiedCount===1) {
+    if (updatedata.modifiedCount === 1) {
         res.send({
             msg: "data updated",
-            updatedata:updatedata.modifiedCount
-            });
+            updatedata: updatedata.modifiedCount
+        });
     }
-    else
-    {
+    else {
         res.send({
-            msg:"Value remain Same"
+            msg: "Value remain Same"
         })
     }
 
@@ -201,4 +202,4 @@ const PORT = (process.env.PORT || 5000);
 app.listen(PORT, () => {
     console.log(`server running ... ${PORT}`);
 });
-app.set("port",PORT)
+app.set("port", PORT)

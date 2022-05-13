@@ -97,8 +97,23 @@ export class PopupComponents implements OnInit {
   saveData() {
     if (!this.empdata) {
       if (this.myform.valid) {
-       
-
+        this.api.postusers(this.myform.value).subscribe({next:(res)=>
+        {
+          console.log(res);
+          if(res.msg=="Mobile number and Email already exists")
+          {
+            alert("Mobile number and Email already exists");
+          }
+          else if(res.msg=="mobile number already exits")
+          {
+            alert("mobile number already exits");
+          }
+          else if(res.msg=="email id already exits")
+          {
+            alert("email id already exits");
+          }
+          else{
+            
         Swal.fire({
           title: 'Do You Want Add',
           text: "",
@@ -120,16 +135,16 @@ export class PopupComponents implements OnInit {
               //   toast.addEventListener('mouseleave', Swal.resumeTimer)
               // }
             })
+            if(res.msg="employee data created")
+            {
+              Toast.fire({
+                icon: 'success',
+                title: 'Employee Added'
+              })
+            }
 
-            console.log(this.myform.value);
-            this.api.postusers(this.myform.value).subscribe({
-              next: (res) => {
-                Toast.fire({
-                  icon: 'success',
-                  title: 'Employee Added'
-                })
-              }
-            })
+         
+             
             this.myform.reset();
             this.bsModalRef.hide();
 
@@ -142,10 +157,18 @@ export class PopupComponents implements OnInit {
 
         })
 
+          }
+          
+        }})
+
+       
+
 
 
         // alert("Data Added")
       }
+
+      
       else {
         this.message = "All Values Are Required";
         const Toast = Swal.mixin({
