@@ -1,0 +1,54 @@
+<!-- https://github.com/JagtapKishor104/NGX_BOOTSTRAP.git -->
+
+<div class="modal-header">
+    <h4 class="modal-title pull-left">{{title}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form [formGroup]="myform" enctype="multipart/form-data">
+        <div class="mb-3 d-none">
+            <label class="form-label">ID</label>
+            <input type="number" class="form-control" formControlName="id">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">first Name</label>
+            <input type="text" class="form-control" formControlName="fname">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lname">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="email">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Mobile</label>
+            <input type="text" class="form-control" formControlName="mobile">
+        </div>     <div class="mb-3">
+            <label class="form-label">Salary</label>
+            <input type="text" class="form-control" formControlName="salary">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Avatar</label>
+            <input type="file" accept=".png, .jpg, .jpeg" class="form-control text-center"
+                (change)="onFileChanged($event)">
+            <div class="text-center">
+                <img class="img-thumbnail mt-3 "
+                    [src]="( imageSrc || logoimage || image ) || 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg' "
+                    alt="your image" height="200" width="200" />
+            </div>
+
+            <!-- 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg' || -->
+        </div>
+        <p class="text-danger">{{message}}</p>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="saveData()">{{btn}}</button>
+
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+</div>

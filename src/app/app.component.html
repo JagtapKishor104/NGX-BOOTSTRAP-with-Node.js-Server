@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light mt-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Employee Details</a>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+
+
+        <button type="button" class="btn btn-primary ms-5" (click)="openModalWithComponent()">Add Employee</button>
+
+      </ul>
+
+
+    </div>
+  </nav>
+
+
+  <input class="form-control mt-3 filter text-light" name="searchString" [(ngModel)]="searchString"
+    placeholder="Search in this Page">
+
+  <div class="table-responsive  ">
+    <table class=" table text-center table-hover table-striped table-bordered  mt-3">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Salary</th>
+
+          <th>Avatar</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let d of Data | filter:searchString | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems: count}, index as id">
+          <td>{{id+1}}</td>
+          <td>{{d.ufname}}</td>
+          <td>{{d.ulname}}</td>
+          <td>{{d.uemail}}</td>
+          <td>{{d.umobile}}</td>
+          <td>{{d.usalary}}</td>
+
+          <td><img src={{d.uimage}} alt="" height="30" width="30"></td>
+          <td>
+            <div class="d-flex justify-content-center">
+              <button type="button" class="btn btn-primary me-3 " (click)="openEditComponent(d)">Edit</button>
+              <button type="button" class="btn btn-danger" (click)="deleteData(d.id)">Delete</button>
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+
+    </div>
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
+  </div>
+
+</div>
