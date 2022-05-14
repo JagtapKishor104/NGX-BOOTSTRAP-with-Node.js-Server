@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(PopupComponents, initialState);
     this.bsModalRef.content.closeBtnName = 'Close';
-    this.bsModalRef.onHide!.subscribe(() => {
+    this.bsModalRef.onHide.subscribe(() => {
       this.getusers();
     })
 

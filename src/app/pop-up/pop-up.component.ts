@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { BsComponentRef } from 'ngx-bootstrap/component-loader';
 import { BsModalRef } from "ngx-bootstrap/modal";
+import { range } from 'rxjs';
 import Swal from 'sweetalert2'
 import { ApiService } from "../Service/api.service";
 
@@ -26,6 +27,7 @@ export class PopupComponents implements OnInit {
   imageSrc: any;
   logoimage!: string;
   image!: string;
+  submitted = false;
 
 
 
@@ -90,18 +92,26 @@ export class PopupComponents implements OnInit {
       fname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
       lname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
       //  dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
-      email: new FormControl("@gmail.com", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      mobile: new FormControl("", [Validators.required]),
-      salary: new FormControl("", [Validators.required]),
+      email: new FormControl("", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      mobile: new FormControl("", [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+      salary: new FormControl("", [Validators.required,Validators.min(100),Validators.max(500000)]),
 
       image: new FormControl("", [Validators.required]),
 
     }
   );
+  get f(): { [key: string]: AbstractControl } {
+    return this.myform.controls;
+  }
 
   saveData() {
+    this.submitted = true;
+    if (this.myform.invalid) {
+     
+    }
     if (!this.empdata) {
       if (this.myform.valid) {
+
         this.api.postusers(this.myform.value).subscribe({
           next: (res) => {
             console.log(res);
@@ -115,13 +125,14 @@ export class PopupComponents implements OnInit {
               alert("email id already exits");
             }
             else {
+
               const Toast = Swal.mixin({
                 toast: true,
                 position: 'top-end',
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true,
-
+        
               })
               Toast.fire({
                 icon: 'success',
@@ -133,10 +144,11 @@ export class PopupComponents implements OnInit {
             }
 
           }
+          
         })
 
 
-
+       
 
 
 

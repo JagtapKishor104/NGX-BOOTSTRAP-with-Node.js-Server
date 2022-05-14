@@ -14,52 +14,68 @@
         </div> -->
         <div class="mb-3">
             <label class="form-label">first Name</label><span>*</span>
-            <input type="text" class="form-control" formControlName="fname">
-            <div
-                *ngIf="myform.controls['fname'].invalid && (myform.controls['fname'].dirty || myform.controls['fname'].touched)">
-                <small>First Name Is required</small>
-                
+            <input type="text" class="form-control" formControlName="fname"
+                [ngClass]="{ 'is-invalid': submitted && f['fname'].errors }">
+            <div *ngIf="submitted && f['fname'].errors" class="text-danger">
+                <div *ngIf="f['fname'].errors && f['fname'].errors['required']">First Name is required.</div>
+                <div *ngIf="f['fname'].errors && f['fname'].errors['minlength']">First Name should be 2 character.</div>
+                <div *ngIf="f['fname'].errors && f['fname'].errors['maxlength']">First Name not be greater than 10
+                    character.</div>
+                <div *ngIf="f['fname'].touched && f['fname'].invalid">First Name is invalid.</div>
             </div>
-           
-           
+
+
         </div>
         <div class="mb-3">
             <label class="form-label">Last Name</label><span>*</span>
-            <input type="text" class="form-control" formControlName="lname">
-            <div
-                *ngIf="myform.controls['lname'].invalid && (myform.controls['lname'].dirty || myform.controls['lname'].touched)">
-                <small>Last Name Is required</small>
+            <input type="text" class="form-control" formControlName="lname"
+                [ngClass]="{ 'is-invalid': submitted && f['lname'].errors }">
+            <div *ngIf="submitted && f['lname'].errors" class="text-danger">
+                <div *ngIf="f['lname'].errors && f['lname'].errors['required']">Last Name is required.</div>
+                <div *ngIf="f['lname'].errors && f['lname'].errors['minlength']">Last Name should be 2 character.</div>
+                <div *ngIf="f['lname'].errors && f['lname'].errors['maxlength']">Last Name not be greater than 10
+                    character.</div>
+                <div *ngIf="f['lname'].touched && f['lname'].invalid">Last Name is invalid.</div>
             </div>
         </div>
         <div class="mb-3">
             <label class="form-label">Email</label><span>*</span>
-            <input type="email" class="form-control" formControlName="email">
-            <div
-                *ngIf="myform.controls['email'].invalid && (myform.controls['email'].dirty || myform.controls['email'].touched)">
-                <small>Email Is required</small>
+            <input type="email" class="form-control" formControlName="email"
+                [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+            <div *ngIf="submitted && f['lname'].errors" class="text-danger">
+                <div *ngIf="f['email'].errors && f['email'].errors['required']">Email is required.</div>
+                <div *ngIf="f['email'].touched && f['email'].invalid">Email is invalid.</div>
             </div>
         </div>
         <div class="mb-3">
             <label class="form-label">Mobile</label><span>*</span>
-            <input type="number" class="form-control" formControlName="mobile">
-            <div
-                *ngIf="myform.controls['mobile'].invalid && (myform.controls['mobile'].dirty || myform.controls['mobile'].touched)">
-                <small>Mobile Number Is required</small>
+            <input type="number" class="form-control" formControlName="mobile"
+                [ngClass]="{ 'is-invalid': submitted && f['mobile'].errors }">
+            <div *ngIf="submitted && f['mobile'].errors" class="text-danger">
+                <div *ngIf="f['mobile'].errors && f['mobile'].errors['required']">Mobile is required.</div>
+                <div *ngIf="f['mobile'].touched && f['mobile'].invalid">Mobile is invalid.</div>
             </div>
         </div>
         <div class="mb-3">
             <label class="form-label">Salary</label><span>*</span>
-            <input type="number" class="form-control" formControlName="salary" minlength="2" maxlength="6">
-            <div
-                *ngIf="myform.controls['salary'].invalid && (myform.controls['salary'].dirty || myform.controls['salary'].touched)">
-                <small>Salary Is required</small>
+            <input type="number" class="form-control" formControlName="salary"
+                [ngClass]="{ 'is-invalid': submitted && f['salary'].errors }">
+            <div *ngIf="submitted && f['salary'].errors" class="text-danger">
+                <div *ngIf="f['salary'].errors && f['salary'].errors['required']">Salary is required.</div>
+                <div *ngIf="f['salary'].errors && f['salary'].errors['min']">Salary should be Minimun ₹100.</div>
+                <div *ngIf="f['salary'].errors && f['salary'].errors['max']">Salary not be less than ₹50000.
+                </div>
+                <div *ngIf="f['salary'].touched && f['salary'].invalid">Salary is invalid.</div>
             </div>
-        </div>
+        </div>    
         <div class="mb-3">
             <label class="form-label">Image</label><span>*</span>
             <input type="file" accept=".png, .jpg, .jpeg" class="form-control text-center"
-                (change)="onFileChanged($event)">
-            
+                (change)="onFileChanged($event)" [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
+                <div *ngIf="submitted && f['image'].errors" class="text-danger">
+                    <div *ngIf="f['image'].errors && f['image'].errors['required']">Image is required.</div>
+                    <div *ngIf="f['image'].touched && f['image'].invalid">Image is invalid.</div>
+                </div>
             <div class="text-center">
                 <img class="img-thumbnail mt-3 "
                     [src]="( imageSrc || logoimage || image ) || 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg' "
@@ -72,7 +88,7 @@
     </form>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="saveData()">{{btn}}</button>
+    <button type="submit" class="btn btn-default" (click)="saveData()">{{btn}}</button>
 
     <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
 </div>
