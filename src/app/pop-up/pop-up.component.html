@@ -14,28 +14,33 @@
         </div> -->
         <div class="mb-3">
             <label class="form-label">first Name</label><span>*</span>
-            <input type="text" class="form-control" formControlName="fname"
+            <input type="text" class="form-control" formControlName="fname" onkeypress="return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
                 [ngClass]="{ 'is-invalid': submitted && f['fname'].errors }">
+
             <div *ngIf="submitted && f['fname'].errors" class="text-danger">
+
                 <div *ngIf="f['fname'].errors && f['fname'].errors['required']">First Name is required.</div>
                 <div *ngIf="f['fname'].errors && f['fname'].errors['minlength']">First Name should be 2 character.</div>
                 <div *ngIf="f['fname'].errors && f['fname'].errors['maxlength']">First Name not be greater than 10
                     character.</div>
                 <div *ngIf="f['fname'].touched && f['fname'].invalid">First Name is invalid.</div>
+                <!-- <div *ngIf="f['fname'].touched && f['fname'].errors">First Name is invalid.</div> -->
             </div>
 
 
         </div>
         <div class="mb-3">
             <label class="form-label">Last Name</label><span>*</span>
-            <input type="text" class="form-control" formControlName="lname"
+            <input type="text" class="form-control" formControlName="lname" onkeypress= "return (event.charCode > 64 && 
+            event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)"
                 [ngClass]="{ 'is-invalid': submitted && f['lname'].errors }">
             <div *ngIf="submitted && f['lname'].errors" class="text-danger">
                 <div *ngIf="f['lname'].errors && f['lname'].errors['required']">Last Name is required.</div>
                 <div *ngIf="f['lname'].errors && f['lname'].errors['minlength']">Last Name should be 2 character.</div>
                 <div *ngIf="f['lname'].errors && f['lname'].errors['maxlength']">Last Name not be greater than 10
                     character.</div>
-                <div *ngIf="f['lname'].touched && f['lname'].invalid">Last Name is invalid.</div>
+                <!-- <div *ngIf="f['lname'].touched && f['lname'].invalid">Last Name is invalid.</div> -->
             </div>
         </div>
         <div class="mb-3">

@@ -39,12 +39,12 @@
         <tr
           *ngFor="let d of Data | filter:searchString | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems: count}, index as id">
           <td>{{id+1}}</td>
-          <td>{{d.ufname}}</td>
-          <td>{{d.ulname}}</td>
+          <td>{{d.ufname | titlecase}}</td>
+          <td>{{d.ulname | titlecase}}</td>
           <td>{{d.uemail}}</td>
-          <td>{{d.umobile}}</td>
-          <td>{{d.usalary}}</td>
-
+          <td>{{d.umobile }}</td>
+          <td>{{d.usalary | currency:"INR" }}</td>
+          <!-- | number : '1.2-2'  pipe for number like 12,111,225.00 -->
           <td><img src={{d.uimage}} alt="" height="30" width="30"></td>
           <td>
             <div class="d-flex justify-content-center">

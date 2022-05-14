@@ -94,7 +94,7 @@ export class PopupComponents implements OnInit {
       //  dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
       email: new FormControl("", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       mobile: new FormControl("", [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
-      salary: new FormControl("", [Validators.required,Validators.min(100),Validators.max(500000)]),
+      salary: new FormControl("", [Validators.required, Validators.min(100), Validators.max(500000)]),
 
       image: new FormControl("", [Validators.required]),
 
@@ -107,7 +107,7 @@ export class PopupComponents implements OnInit {
   saveData() {
     this.submitted = true;
     if (this.myform.invalid) {
-     
+
     }
     if (!this.empdata) {
       if (this.myform.valid) {
@@ -132,7 +132,7 @@ export class PopupComponents implements OnInit {
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true,
-        
+
               })
               Toast.fire({
                 icon: 'success',
@@ -144,11 +144,11 @@ export class PopupComponents implements OnInit {
             }
 
           }
-          
+
         })
 
 
-       
+
 
 
 
