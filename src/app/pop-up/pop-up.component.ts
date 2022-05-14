@@ -34,7 +34,7 @@ export class PopupComponents implements OnInit {
   ngOnInit(): void {
     if (this.empdata) {
       console.log(this.empdata);
-      localStorage.setItem("_id",this.empdata._id);
+      localStorage.setItem("_id", this.empdata._id);
 
       this.image = this.empdata.uimage
 
@@ -97,78 +97,50 @@ export class PopupComponents implements OnInit {
   saveData() {
     if (!this.empdata) {
       if (this.myform.valid) {
-        this.api.postusers(this.myform.value).subscribe({next:(res)=>
-        {
-          console.log(res);
-          if(res.msg=="Mobile number and Email already exists")
-          {
-            alert("Mobile number and Email already exists");
-          }
-          else if(res.msg=="mobile number already exits")
-          {
-            alert("mobile number already exits");
-          }
-          else if(res.msg=="email id already exits")
-          {
-            alert("email id already exits");
-          }
-          else{
-            
-        Swal.fire({
-          title: 'Do You Want Add',
-          text: "",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes, Add it!'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              timer: 2000,
-              timerProgressBar: true,
-              // didOpen: (toast) => {
-              //   toast.addEventListener('mouseenter', Swal.stopTimer)
-              //   toast.addEventListener('mouseleave', Swal.resumeTimer)
-              // }
-            })
-            if(res.msg="employee data created")
-            {
+        this.api.postusers(this.myform.value).subscribe({
+          next: (res) => {
+            console.log(res);
+            if (res.msg == "Mobile number and Email already exists") {
+              alert("Mobile number and Email already exists");
+            }
+            else if (res.msg == "mobile number already exits") {
+              alert("mobile number already exits");
+            }
+            else if (res.msg == "email id already exits") {
+              alert("email id already exits");
+            }
+            else {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                // didOpen: (toast) => {
+                //   toast.addEventListener('mouseenter', Swal.stopTimer)
+                //   toast.addEventListener('mouseleave', Swal.resumeTimer)
+                // }
+              })
               Toast.fire({
                 icon: 'success',
-                title: 'Employee Added'
+                title: 'Value Added successfully'
               })
+              this.myform.reset();
+              this.bsModalRef.hide();
+
             }
 
-         
-             
-            this.myform.reset();
-            this.bsModalRef.hide();
-
-
           }
-          else {
-            this.bsModalRef.hide();
-          }
-
-
         })
 
-          }
-          
-        }})
 
-       
 
 
 
         // alert("Data Added")
       }
 
-      
+
       else {
         this.message = "All Values Are Required";
         const Toast = Swal.mixin({
@@ -198,7 +170,7 @@ export class PopupComponents implements OnInit {
     if (this.myform.valid) {
       console.log("update works=>");
       console.log("Updated Values in form", this.myform.value);
-     
+
       // alert("Updated");
       const Toast = Swal.mixin({
         toast: true,
@@ -212,24 +184,25 @@ export class PopupComponents implements OnInit {
         // }
       })
 
-    
-      const _id=this.api.get_id();
+
+      const _id = this.api.get_id();
       console.log(_id);
-      
-      this.api.updateusers(_id,this.myform.value).subscribe({next:(res)=>
-      {
-        Toast.fire({
-          icon: 'success',
-          title: 'Updated successfully',
 
-        })
-        this.bsModalRef.content.closeBtnName="Update";
+      this.api.updateusers(_id, this.myform.value).subscribe({
+        next: (res) => {
+          Toast.fire({
+            icon: 'success',
+            title: 'Updated successfully',
 
-        
-      }})
+          })
+          this.bsModalRef.content.closeBtnName = "Update";
+
+
+        }
+      })
       this.myform.reset();
       this.bsModalRef.hide();
-     
+
       localStorage.clear();
 
     }
