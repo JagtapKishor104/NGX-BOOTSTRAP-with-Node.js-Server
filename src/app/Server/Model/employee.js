@@ -24,7 +24,11 @@ const userSchema = new mongoose.Schema(
         },
         uimage:{
             type:String,
-            required:true
+            required:true,
+            // minlength:100,
+            // maxlength:200,
+            trim:100    
+            
         }
     }
 );

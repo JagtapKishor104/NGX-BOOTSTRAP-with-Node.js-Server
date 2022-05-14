@@ -9,9 +9,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import {PaginationModule} from "ngx-bootstrap/pagination";
 import {NgxPaginationModule} from 'ngx-pagination';
-import { TableFilterPipe } from './table-filter.pipe';
 
 @NgModule({
   declarations: [

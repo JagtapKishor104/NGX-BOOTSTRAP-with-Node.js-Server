@@ -4,6 +4,7 @@ import { BsComponentRef } from 'ngx-bootstrap/component-loader';
 import { BsModalRef } from "ngx-bootstrap/modal";
 import Swal from 'sweetalert2'
 import { ApiService } from "../Service/api.service";
+
 @Component({
   selector: 'app-pop-up',
   templateUrl: './pop-up.component.html',
@@ -25,6 +26,8 @@ export class PopupComponents implements OnInit {
   imageSrc: any;
   logoimage!: string;
   image!: string;
+
+ 
   constructor(
     public bsModalRef: BsModalRef,
     private fb: FormBuilder,
@@ -83,13 +86,14 @@ export class PopupComponents implements OnInit {
   myform = this.fb.group(
     {
       id: new FormControl(""),
-      fname: new FormControl("", Validators.required),
-      lname: new FormControl(""),
-      email: new FormControl(""),
-      mobile: new FormControl(""),
-      salary: new FormControl(""),
+      fname: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
+      lname: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
+//  dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
+      email: new FormControl("@gmail.com",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      mobile: new FormControl("",[Validators.required]),
+      salary: new FormControl("",[Validators.required]),
 
-      image: new FormControl(""),
+      image: new FormControl("",[Validators.required]),
 
     }
   );
