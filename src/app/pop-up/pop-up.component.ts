@@ -27,7 +27,8 @@ export class PopupComponents implements OnInit {
   logoimage!: string;
   image!: string;
 
- 
+
+
   constructor(
     public bsModalRef: BsModalRef,
     private fb: FormBuilder,
@@ -86,14 +87,14 @@ export class PopupComponents implements OnInit {
   myform = this.fb.group(
     {
       id: new FormControl(""),
-      fname: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
-      lname: new FormControl("",[Validators.required,Validators.minLength(2),Validators.maxLength(10)]),
-//  dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
-      email: new FormControl("@gmail.com",[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-      mobile: new FormControl("",[Validators.required]),
-      salary: new FormControl("",[Validators.required]),
+      fname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
+      lname: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(10)]),
+      //  dob: ['', [Validators.required, Validators.pattern(/^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/)]],
+      email: new FormControl("@gmail.com", [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
+      mobile: new FormControl("", [Validators.required]),
+      salary: new FormControl("", [Validators.required]),
 
-      image: new FormControl("",[Validators.required]),
+      image: new FormControl("", [Validators.required]),
 
     }
   );
@@ -120,10 +121,7 @@ export class PopupComponents implements OnInit {
                 showConfirmButton: false,
                 timer: 2000,
                 timerProgressBar: true,
-                // didOpen: (toast) => {
-                //   toast.addEventListener('mouseenter', Swal.stopTimer)
-                //   toast.addEventListener('mouseleave', Swal.resumeTimer)
-                // }
+
               })
               Toast.fire({
                 icon: 'success',
@@ -141,22 +139,20 @@ export class PopupComponents implements OnInit {
 
 
 
-        // alert("Data Added")
+
       }
 
 
       else {
         this.message = "All Values Are Required";
+
         const Toast = Swal.mixin({
           toast: true,
           position: 'top-end',
           showConfirmButton: false,
           timer: 2000,
           timerProgressBar: true,
-          // didOpen: (toast) => {
-          //   toast.addEventListener('mouseenter', Swal.stopTimer)
-          //   toast.addEventListener('mouseleave', Swal.resumeTimer)
-          // }
+
         })
 
         Toast.fire({

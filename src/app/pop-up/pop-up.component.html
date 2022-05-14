@@ -7,21 +7,24 @@
     </button>
 </div>
 <div class="modal-body">
-    <form [formGroup]="myform" enctype="multipart/form-data">
+    <form [formGroup]="myform" enctype="multipart/form-data" novalidate>
         <!-- <div class="mb-3 d-none">
             <label class="form-label">ID</label>
             <input type="text" class="form-control" formControlName="id">
         </div> -->
         <div class="mb-3">
-            <label class="form-label">first Name</label>
+            <label class="form-label">first Name</label><span>*</span>
             <input type="text" class="form-control" formControlName="fname">
             <div
                 *ngIf="myform.controls['fname'].invalid && (myform.controls['fname'].dirty || myform.controls['fname'].touched)">
                 <small>First Name Is required</small>
+                
             </div>
+           
+           
         </div>
         <div class="mb-3">
-            <label class="form-label">Last Name</label>
+            <label class="form-label">Last Name</label><span>*</span>
             <input type="text" class="form-control" formControlName="lname">
             <div
                 *ngIf="myform.controls['lname'].invalid && (myform.controls['lname'].dirty || myform.controls['lname'].touched)">
@@ -29,7 +32,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label">Email</label>
+            <label class="form-label">Email</label><span>*</span>
             <input type="email" class="form-control" formControlName="email">
             <div
                 *ngIf="myform.controls['email'].invalid && (myform.controls['email'].dirty || myform.controls['email'].touched)">
@@ -37,7 +40,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label">Mobile</label>
+            <label class="form-label">Mobile</label><span>*</span>
             <input type="number" class="form-control" formControlName="mobile">
             <div
                 *ngIf="myform.controls['mobile'].invalid && (myform.controls['mobile'].dirty || myform.controls['mobile'].touched)">
@@ -45,7 +48,7 @@
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label">Salary</label>
+            <label class="form-label">Salary</label><span>*</span>
             <input type="number" class="form-control" formControlName="salary" minlength="2" maxlength="6">
             <div
                 *ngIf="myform.controls['salary'].invalid && (myform.controls['salary'].dirty || myform.controls['salary'].touched)">
@@ -53,13 +56,10 @@
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label">Avatar</label>
+            <label class="form-label">Image</label><span>*</span>
             <input type="file" accept=".png, .jpg, .jpeg" class="form-control text-center"
                 (change)="onFileChanged($event)">
-                <div
-                *ngIf="myform.controls['image'].invalid && (myform.controls['image'].dirty || myform.controls['image'].touched)">
-                <small>image Is required</small>
-            </div>
+            
             <div class="text-center">
                 <img class="img-thumbnail mt-3 "
                     [src]="( imageSrc || logoimage || image ) || 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg' "
