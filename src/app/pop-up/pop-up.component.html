@@ -67,15 +67,15 @@
                 </div>
                 <div *ngIf="f['salary'].touched && f['salary'].invalid">Salary is invalid.</div>
             </div>
-        </div>    
+        </div>
         <div class="mb-3">
             <label class="form-label">Image</label><span>*</span>
             <input type="file" accept=".png, .jpg, .jpeg" class="form-control text-center"
                 (change)="onFileChanged($event)" [ngClass]="{ 'is-invalid': submitted && f['image'].errors }">
-                <div *ngIf="submitted && f['image'].errors" class="text-danger">
-                    <div *ngIf="f['image'].errors && f['image'].errors['required']">Image is required.</div>
-                    <div *ngIf="f['image'].touched && f['image'].invalid">Image is invalid.</div>
-                </div>
+            <div *ngIf="submitted && f['image'].errors" class="text-danger">
+                <div *ngIf="f['image'].errors && f['image'].errors['required']">Image is required.</div>
+                <div *ngIf="f['image'].touched && f['image'].invalid">Image is invalid.</div>
+            </div>
             <div class="text-center">
                 <img class="img-thumbnail mt-3 "
                     [src]="( imageSrc || logoimage || image ) || 'https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg' "
