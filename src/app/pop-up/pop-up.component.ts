@@ -14,7 +14,7 @@ import { ApiService } from "../Service/api.service";
 export class PopupComponents implements OnInit {
 
   title?: string;
-  closeBtnName?: string = "Close";
+  closeBtnName: string = "Close";
   btn?: string;
   value?: string;
   list: any[] = [];
@@ -29,13 +29,13 @@ export class PopupComponents implements OnInit {
   image!: string;
   submitted = false;
 
-
-
   constructor(
     public bsModalRef: BsModalRef,
     private fb: FormBuilder,
     public api: ApiService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
     if (this.empdata) {
@@ -54,8 +54,18 @@ export class PopupComponents implements OnInit {
 
       // this.myform.controls["avatar"].setValue(this.empdata.avatar);
     }
+    let closebtn = document.getElementById('close');
+    closebtn.addEventListener('click', () => {
+      localStorage.clear();
+      console.log('Window Closed');
 
+
+      this.bsModalRef.hide();
+
+    })
   }
+
+
 
 
   onFileChanged(e: any) {
@@ -100,6 +110,8 @@ export class PopupComponents implements OnInit {
 
     }
   );
+
+
   get f(): { [key: string]: AbstractControl } {
     return this.myform.controls;
   }
@@ -219,5 +231,6 @@ export class PopupComponents implements OnInit {
 
     }
   }
+
 
 }

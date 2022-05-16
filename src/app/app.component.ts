@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   ufname="";
   str: any;
   first_name: any;
-  datalength: number;
+  datalength!: number;
   constructor(
     private modalService: BsModalService,
     private api: ApiService
@@ -50,7 +50,11 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getusers();
+    
   }
+
+
+
   getusers() {
     this.api.getuser().subscribe({
       next: (res) => {
@@ -80,7 +84,7 @@ export class AppComponent implements OnInit {
     };
     this.bsModalRef = this.modalService.show(PopupComponents, initialState);
     this.bsModalRef.content.closeBtnName = 'Close';
-    this.bsModalRef.onHide.subscribe(() => {
+    this.bsModalRef.onHide!.subscribe(() => {
       this.getusers();
     })
 
