@@ -55,6 +55,7 @@ export class AppComponent implements OnInit {
       next: (res) => {
         this.Data = res.result;
         // console.log(this.Data);
+        
         this.datalength = res.result.length;
 
       }
