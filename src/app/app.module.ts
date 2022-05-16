@@ -11,11 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import {PaginationModule} from "ngx-bootstrap/pagination";
 import {NgxPaginationModule} from 'ngx-pagination';
+// import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PopupComponents,
+    // SearchPipe
 
   ],
   imports: [
@@ -28,7 +30,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     Ng2SearchPipeModule,
     NgxPaginationModule,
-    PaginationModule
+    PaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

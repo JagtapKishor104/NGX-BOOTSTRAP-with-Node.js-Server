@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   count: number = 0;
   tableSize: number = 10;
   tableSizes: any = [3, 6, 9, 12];
-
+  ufname="";
   str: any;
   first_name: any;
   datalength: number;
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
   onTableDataChange(event: any) {
     this.page = event;
     this.getusers();
+
   }
   ngOnInit(): void {
     this.getusers();
