@@ -17,23 +17,27 @@ export class AppComponent implements OnInit {
   maxSize = 5;
   status = "ON";
   totalItems = 150;
-  itemsPerPage = 5;
   config: any;
   page: number = 1;
   count: number = 0;
   tableSize: number = 10;
-  // tableSizes: any = [3, 6, 9, 12];
-  dummyCates: any;
+  tableSizes: any = [3, 6, 9, 12];
+
   str: any;
   first_name: any;
+  datalength: number;
   constructor(
     private modalService: BsModalService,
     private api: ApiService
 
 
   ) {
+    console.log(this.Data1);
+
 
   }
+
+
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
@@ -50,7 +54,8 @@ export class AppComponent implements OnInit {
     this.api.getuser().subscribe({
       next: (res) => {
         this.Data = res.result;
-        console.log(this.Data);
+        // console.log(this.Data);
+        this.datalength = res.result.length;
 
       }
     })
@@ -79,7 +84,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  
+
   openEditComponent(d: any) {
 
     const initialState: ModalOptions = {
@@ -157,5 +162,258 @@ export class AppComponent implements OnInit {
     })
 
   }
+  Data1: any[] = [
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "kishor",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+    {
+      ufname: "rahul",
+      ulname: "jagtap",
+      uemail: "kishor104@gmail.com",
+      umobile: 1234567890,
+      usalary: 32000,
+      avatar: ""
+    },
+
+  ]
+  datalength1 = this.Data1.length;
 
 }

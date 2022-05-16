@@ -37,7 +37,7 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="let d of Data | filter:searchString | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems: count}, index as id">
+          *ngFor="let d of Data | filter:searchString | paginate:{itemsPerPage: tableSize,currentPage: page,totalItems: count}, let id=index">
           <td>{{id+1}}</td>
           <td>{{d.ufname | titlecase}}</td>
           <td>{{d.ulname | titlecase}}</td>
@@ -45,7 +45,7 @@
           <td>{{d.umobile }}</td>
           <td>{{d.usalary | currency:"INR" }}</td>
           <!-- | number : '1.2-2'  pipe for number like 12,111,225.00 -->
-          <td><img src={{d.uimage}} alt="" height="30" width="30"></td>
+          <td><img src={{d.uimage}} alt="img not found" height="30" width="30"></td>
           <td>
             <div class="d-flex justify-content-center">
               <button type="button" class="btn btn-primary me-3 " (click)="openEditComponent(d)">Edit</button>
@@ -59,8 +59,23 @@
     <div>
 
     </div>
-    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
-    </pagination-controls>
+    <div class="d-flex  justify-content-start">
+      <div>
+        Items per Page:
+        <select (change)="
+        onTableSizeChange($event)" class="px-3">
+          <option *ngFor="let size of tableSizes" [ngValue]="size" >
+            {{ size }}
+          </option>
+        </select>
+      </div>
+  <div>
+    <pagination-controls previousLabel="Prev" nextLabel="Next" responsive="true"
+    (pageChange)="onTableDataChange($event)">
+  </pagination-controls>
+  </div>
+    </div>
   </div>
 
 </div>
+    <!-- <p>Total Number of Result: {{datalength}}</p> -->
